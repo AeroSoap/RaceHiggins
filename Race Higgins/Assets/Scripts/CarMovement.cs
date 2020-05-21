@@ -20,6 +20,8 @@ public class CarMovement : MonoBehaviour {
 	public float MaxSpeed;
 	// Braking speed
 	public float BrakeSpeed;
+	// How quickly the effective normal is updated
+	public float NormalSpeed;
 	// Levitation points to use
 	public Vector3[] Levs;
 
@@ -29,6 +31,7 @@ public class CarMovement : MonoBehaviour {
 	// The rigidbody for physics
 	Rigidbody rb;
 
+	// Touch input
 	bool leftDown, rightDown;
 
 	// Start is called before the first frame update
@@ -41,19 +44,24 @@ public class CarMovement : MonoBehaviour {
 		prevDists = new float[Levs.Length];
 	}
 
+	Vector3 updateNormal(Ray ray, RaycastHit hit) {
+		// Cast a ray from the center of the car downwards to find the surface it's floating on
+		ray.origin = transform.position;
+		ray.direction = transform.TransformDirection(Vector3.down);
+		Debug.DrawRay(ray.origin, ray.direction * 20, Color.green);
+		if(Physics.Raycast(ray, out hit, Mathf.Infinity, ~(1 << LAYER_CAR))) {
+			return -hit.normal;
+		}
+		return Vector3.down;
+	}
+
 	bool levitate() {
 		// Track if we're on the ground
 		bool onGround = false;
 		// Create the variables for storing the ray and ray hit
-		RaycastHit hit;
 		Ray ray = new Ray();
-		// Cast a ray from the center of the car downwards to find the surface it's floating on
-		ray.origin = transform.position;
-		ray.direction = transform.TransformDirection(Vector3.down);
-		if(Physics.Raycast(ray, out hit, Mathf.Infinity, ~(1 << LAYER_CAR))) {
-			// Save the negative normal of the surface to raycast later
-			ray.direction = -hit.normal;
-		}
+		RaycastHit hit = new RaycastHit();
+		ray.direction = updateNormal(ray, hit);
 		// Loop through each corner of the car
 		for(int i = 0; i < Levs.Length; i++) {
 			// Set the origin of the ray to the corner of the car
@@ -61,7 +69,7 @@ public class CarMovement : MonoBehaviour {
 			// (Enabling gizmos will allow you to see the ray direction)
 			Debug.DrawRay(ray.origin, ray.direction * LevHeight * 2, Color.cyan);
 			// Cast the ray towards the surface the car is floating on
-			if(Physics.Raycast(ray, out hit, LevHeight * 1.5f, ~(1 << LAYER_CAR))) {
+			if(Physics.Raycast(ray, out hit, LevHeight * 1.1f, ~(1 << LAYER_CAR))) {
 				// We're on the ground (kinda, anyway)
 				onGround = true;
 				// If there was no previous hit, account for it so dif is just 0
@@ -141,7 +149,7 @@ public class CarMovement : MonoBehaviour {
 		rb.AddRelativeTorque(new Vector3(0, -1, 0) * TurnRate * GyroscopeInput.angle / 45);
 		limitVel(MaxSpeed);
 		// Reload the scene if the player falls into oblivion
-		if(transform.position.y < -10) {
+		if(transform.position.y < -150) {
 			SceneManager.LoadScene("SampleScene");
 		}
 	}
