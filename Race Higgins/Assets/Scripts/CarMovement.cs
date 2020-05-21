@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CarMovement : MonoBehaviour {
 
@@ -15,6 +16,10 @@ public class CarMovement : MonoBehaviour {
 	public float Gravity;
 	// How high the car levitates
 	public float LevHeight;
+	// Maximum velocity
+	public float MaxSpeed;
+	// Braking speed
+	public float BrakeSpeed;
 	// Levitation points to use
 	public Vector3[] Levs;
 
@@ -23,6 +28,8 @@ public class CarMovement : MonoBehaviour {
 
 	// The rigidbody for physics
 	Rigidbody rb;
+
+	bool leftDown, rightDown;
 
 	// Start is called before the first frame update
 	void Start() {
@@ -34,7 +41,9 @@ public class CarMovement : MonoBehaviour {
 		prevDists = new float[Levs.Length];
 	}
 
-	void levitate() {
+	bool levitate() {
+		// Track if we're on the ground
+		bool onGround = false;
 		// Create the variables for storing the ray and ray hit
 		RaycastHit hit;
 		Ray ray = new Ray();
@@ -52,7 +61,9 @@ public class CarMovement : MonoBehaviour {
 			// (Enabling gizmos will allow you to see the ray direction)
 			Debug.DrawRay(ray.origin, ray.direction * LevHeight * 2, Color.cyan);
 			// Cast the ray towards the surface the car is floating on
-			if(Physics.Raycast(ray, out hit, LevHeight * 1.25f, ~(1 << LAYER_CAR))) {
+			if(Physics.Raycast(ray, out hit, LevHeight * 1.5f, ~(1 << LAYER_CAR))) {
+				// We're on the ground (kinda, anyway)
+				onGround = true;
 				// If there was no previous hit, account for it so dif is just 0
 				if(prevDists[i] == 0) {
 					prevDists[i] = hit.distance;
@@ -76,18 +87,48 @@ public class CarMovement : MonoBehaviour {
 				prevDists[i] = 0;
 			}
 		}
-		
+		return onGround;
+	}
+
+	// Limits the current velocity to max by applying a counteracting force
+	void limitVel(float max) {
+		if(rb.velocity.magnitude > max) {
+			Vector3 counter = -rb.velocity;
+			counter = counter.normalized * (counter.magnitude - max);
+			rb.AddForce(counter / Time.fixedDeltaTime);
+		}
+	}
+
+	// Sets the booleans leftDown and rightDown accordingly based on touch input
+	void getTouchInputs() {
+		leftDown = false;
+		rightDown = false;
+		for(int i = 0; i < Input.touchCount; i++) {
+			Touch touch = Input.GetTouch(i);
+			if(touch.position.x < Screen.width / 2) {
+				leftDown = true;
+			} else {
+				rightDown = true;
+			}
+		}
 	}
 
 	void FixedUpdate() {
-		levitate();
-		// Do the keyboard input for movement
-		if(Input.GetKey("w")) {
-			// Add a force if we're going forwards or backwards
-			rb.AddRelativeForce(new Vector3(0, 0, Acceleration));
-		}
-		if(Input.GetKey("s")) {
-			rb.AddRelativeForce(new Vector3(0, 0, -Acceleration));
+		getTouchInputs();
+		// Only allow acceleration and braking if the car is grounded
+		if(levitate()) {
+			// Do the keyboard input for movement
+			if(Input.GetKey("w") || leftDown) {
+				// Add a force if we're going forwards or backwards
+				rb.AddRelativeForce(new Vector3(0, 0, Acceleration));
+			}
+			if(Input.GetKey("s") || rightDown) {
+				rb.AddRelativeForce(new Vector3(0, 0, -Acceleration));
+			}
+			if(Input.GetKey(KeyCode.LeftShift) || (leftDown && rightDown)) {
+				// Brakes
+				limitVel(rb.velocity.magnitude - BrakeSpeed);
+			}
 		}
 		if(Input.GetKey("d")) {
 			// Add some torque to rotate
@@ -95,6 +136,13 @@ public class CarMovement : MonoBehaviour {
 		}
 		if(Input.GetKey("a")) {
 			rb.AddRelativeTorque(new Vector3(0, -1, 0) * TurnRate);
+		}
+		// Do steering based off of phone rotation
+		rb.AddRelativeTorque(new Vector3(0, -1, 0) * TurnRate * GyroscopeInput.angle / 45);
+		limitVel(MaxSpeed);
+		// Reload the scene if the player falls into oblivion
+		if(transform.position.y < -10) {
+			SceneManager.LoadScene("SampleScene");
 		}
 	}
 

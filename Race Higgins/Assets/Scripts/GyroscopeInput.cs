@@ -1,33 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GyroscopeInput : MonoBehaviour {
 
-	StreamWriter writer;
 	Gyroscope gyro;
+
+	public static float angle;
 
 	// Start is called before the first frame update
 	void Start() {
 		gyro = Input.gyro;
 		gyro.enabled = true;
 		gyro.updateInterval = 1f / 240;
-		writer = new StreamWriter("test.txt");
-		writer.WriteLine("This is a test.");
-		writer.Close();
 	}
 
 	// Update is called once per frame
 	void Update() {
 		Vector3 grav = gyro.gravity;
 		float other;
+		// Determine the most accurate value to use
 		if(Mathf.Abs(grav.y) < Mathf.Abs(grav.z)) {
 			other = grav.z;
 		} else {
 			other = grav.y;
 		}
-		float angle = Mathf.Rad2Deg * Mathf.Atan2(grav.x, other);
-		transform.rotation = Quaternion.Euler(0, 0, angle + 180);
+		// Use that value with grav.x to determine the rotation
+		angle = Mathf.Rad2Deg * Mathf.Atan2(grav.x, other);
+		// Angle is centered around 180 and -180 for some reason, fix it
+		angle = -Mathf.Sign(angle) * (180 - Mathf.Abs(angle));
+		// Rotate the camera so that it stays level in the real world
+		transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x,
+			transform.rotation.eulerAngles.y, angle);
+		// Clamp the angle from -45 to 45, to prevent over-steering
+		angle = Mathf.Clamp(angle, -45, 45);
 	}
 }
