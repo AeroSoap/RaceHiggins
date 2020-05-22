@@ -64,7 +64,7 @@ public class CarMovement : MonoBehaviour {
 			// Set the origin of the ray to the corner of the car
 			ray.origin = transform.TransformPoint(Levs[i]);
 			// (Enabling gizmos will allow you to see the ray direction)
-			Debug.DrawRay(ray.origin, ray.direction * LevHeight * 2, Color.cyan);
+			Debug.DrawRay(ray.origin, ray.direction * LevHeight * 2, Color.red);
 			// Cast the ray towards the surface the car is floating on
 			if(Physics.Raycast(ray, out hit, LevHeight * 1.25f, ~(1 << LAYER_CAR))) {
 				// We're on the ground (kinda, anyway)
