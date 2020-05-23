@@ -121,7 +121,6 @@ public class CarMovement : MonoBehaviour {
 	void FixedUpdate() {
 		// Update gravity
 		Physics.gravity = GravityCalculator.GetGravity(transform.position);
-		Debug.Log(Physics.gravity);
 		getTouchInputs();
 		// Only allow acceleration and braking if the car is grounded
 		if(levitate()) {
