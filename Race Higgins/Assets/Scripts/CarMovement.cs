@@ -12,8 +12,6 @@ public class CarMovement : MonoBehaviour {
 	public float TurnRate;
 	// How strongly the car corrects its height
 	public float LevPower;
-	// Gravitational constant of the universe (can only be changed by Q)
-	public float Gravity;
 	// How high the car levitates
 	public float LevHeight;
 	// Maximum velocity
@@ -39,7 +37,6 @@ public class CarMovement : MonoBehaviour {
 		// Grab the rigidbody
 		rb = GetComponent<Rigidbody>();
 		// Set gravity
-		Physics.gravity = new Vector3(0, -Gravity, 0);
 		// Initialize the previous distances array
 		prevDists = new float[Levs.Length];
 	}
@@ -67,9 +64,9 @@ public class CarMovement : MonoBehaviour {
 			// Set the origin of the ray to the corner of the car
 			ray.origin = transform.TransformPoint(Levs[i]);
 			// (Enabling gizmos will allow you to see the ray direction)
-			Debug.DrawRay(ray.origin, ray.direction * LevHeight * 2, Color.cyan);
+			Debug.DrawRay(ray.origin, ray.direction * LevHeight * 2, Color.red);
 			// Cast the ray towards the surface the car is floating on
-			if(Physics.Raycast(ray, out hit, LevHeight * 1.1f, ~(1 << LAYER_CAR))) {
+			if(Physics.Raycast(ray, out hit, LevHeight * 1.25f, ~(1 << LAYER_CAR))) {
 				// We're on the ground (kinda, anyway)
 				onGround = true;
 				// If there was no previous hit, account for it so dif is just 0
@@ -122,6 +119,8 @@ public class CarMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+		// Update gravity
+		Physics.gravity = GravityCalculator.GetGravity(transform.position);
 		getTouchInputs();
 		// Only allow acceleration and braking if the car is grounded
 		if(levitate()) {

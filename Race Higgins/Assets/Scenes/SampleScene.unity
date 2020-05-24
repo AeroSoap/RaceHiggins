@@ -310,8 +310,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.1, z: -11.7}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.23, z: -7.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1775197184}
@@ -324,11 +324,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de598c3ddc9b30e47bbf7a6adc62b604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Vehicle: {fileID: 1775197180}
 --- !u!1001 &1157586135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -414,13 +415,19 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 78c9f88a18bb7bf4d966d704f676189e,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 78c9f88a18bb7bf4d966d704f676189e,
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: -2416733968201007103, guid: 78c9f88a18bb7bf4d966d704f676189e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 2cd4abb6bea9110468dd65b96bf0f230,
+        type: 3}
     - target: {fileID: -927199367670048503, guid: 78c9f88a18bb7bf4d966d704f676189e,
         type: 3}
       propertyPath: m_Name
@@ -559,9 +566,9 @@ GameObject:
   - component: {fileID: 1775197184}
   - component: {fileID: 1775197183}
   - component: {fileID: 1775197182}
-  - component: {fileID: 1775197181}
   - component: {fileID: 1775197187}
   - component: {fileID: 1775197185}
+  - component: {fileID: 1775197181}
   m_Layer: 8
   m_Name: Car
   m_TagString: Untagged
@@ -569,8 +576,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1775197181
-BoxCollider:
+--- !u!64 &1775197181
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -579,9 +586,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3, y: 1, z: 6}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 8d12ffca8e696074aacd71286099351a, type: 3}
 --- !u!23 &1775197182
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -628,7 +636,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775197180}
-  m_Mesh: {fileID: -2432090755550338912, guid: 2cd4abb6bea9110468dd65b96bf0f230, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: 8d12ffca8e696074aacd71286099351a, type: 3}
 --- !u!4 &1775197184
 Transform:
   m_ObjectHideFlags: 0
@@ -636,14 +644,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775197180}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 395, y: 200, z: -226}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 395, y: 200, z: -356.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1775197185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,18 +665,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Acceleration: 300
-  TurnRate: 40
+  TurnRate: 80
   LevPower: 200
-  Gravity: 200
   LevHeight: 3.5
   MaxSpeed: 300
   BrakeSpeed: 0.75
   NormalSpeed: 0.01
   Levs:
-  - {x: -1.5, y: 0, z: -3}
-  - {x: -1.5, y: 0, z: 3}
-  - {x: 1.5, y: 0, z: -3}
-  - {x: 1.5, y: 0, z: 3}
+  - {x: -1, y: 0, z: -1.7}
+  - {x: -0.8, y: 0, z: 3}
+  - {x: 1, y: 0, z: -1.7}
+  - {x: 0.8, y: 0, z: 3}
+  - {x: -2.9, y: 0, z: -1.7}
+  - {x: 2.9, y: 0, z: -1.7}
 --- !u!54 &1775197187
 Rigidbody:
   m_ObjectHideFlags: 0
