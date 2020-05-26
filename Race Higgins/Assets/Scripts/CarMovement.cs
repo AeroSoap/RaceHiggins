@@ -149,7 +149,7 @@ public class CarMovement : MonoBehaviour {
 		limitVel(MaxSpeed);
 		// Reload the scene if the player falls into oblivion
 		if(transform.position.y < -150) {
-			SceneManager.LoadScene("SampleScene");
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
 	}
 
