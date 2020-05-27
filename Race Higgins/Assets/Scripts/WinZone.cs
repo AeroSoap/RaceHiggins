@@ -12,7 +12,9 @@ public class WinZone : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other) {
 		if(other.name == "Car") {
-			SceneManager.LoadScene(TargetScene);
+			Manager.curLevel = SceneManager.GetActiveScene().name;
+			Manager.newLevel = TargetScene;
+			SceneManager.LoadScene("WinScreen");
 		}
 	}
 }
