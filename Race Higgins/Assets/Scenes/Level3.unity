@@ -224,37 +224,37 @@ PrefabInstance:
     - target: {fileID: 579285784243404954, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 41
+      value: 154.14
       objectReference: {fileID: 0}
     - target: {fileID: 579285784243404954, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9
+      value: 1192.3
       objectReference: {fileID: 0}
     - target: {fileID: 579285784243404954, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -120
+      value: 440.72
       objectReference: {fileID: 0}
     - target: {fileID: 579285784243404954, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.54167527
       objectReference: {fileID: 0}
     - target: {fileID: 579285784243404954, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0.45451948
       objectReference: {fileID: 0}
     - target: {fileID: 579285784243404954, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.45451948
       objectReference: {fileID: 0}
     - target: {fileID: 579285784243404954, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.54167527
       objectReference: {fileID: 0}
     - target: {fileID: 579285784243404954, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
@@ -264,7 +264,7 @@ PrefabInstance:
     - target: {fileID: 579285784243404954, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 579285784243404954, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
@@ -274,17 +274,17 @@ PrefabInstance:
     - target: {fileID: 579285784243404954, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 579285784243404955, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: Acceleration
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 579285784243404955, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: MaxSpeed
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 579285784243406692, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
@@ -300,6 +300,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 579285784243406695, guid: 28c32c18a54debe4e8c499efeeb992d7,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 579285785596228076, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
@@ -1156,7 +1161,7 @@ GameObject:
   - component: {fileID: 1555384092}
   - component: {fileID: 1555384091}
   - component: {fileID: 1555384093}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WinZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1175,7 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c842f588d38112644941108c92b3dd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetScene: WinScene
+  TargetScene: Menu
 --- !u!4 &1555384092
 Transform:
   m_ObjectHideFlags: 0
