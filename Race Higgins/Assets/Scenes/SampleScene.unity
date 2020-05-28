@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 1357422994}
   - component: {fileID: 1357422993}
   - component: {fileID: 1357422997}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WinBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c842f588d38112644941108c92b3dd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetScene: WinScreen
+  TargetScene: Level1
 --- !u!1001 &1402970556
 PrefabInstance:
   m_ObjectHideFlags: 0
