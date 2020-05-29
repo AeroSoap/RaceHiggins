@@ -120,6 +120,7 @@ public class CarMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+		// Increase the time counter
 		Manager.time += Time.fixedDeltaTime;
 		// Update gravity
 		Physics.gravity = GravityCalculator.GetGravity(transform.position);

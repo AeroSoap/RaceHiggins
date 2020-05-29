@@ -11,6 +11,7 @@ public class WinZone : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter(Collider other) {
+		// If the car enters the win zone, update manager variables with the correct scenes and go to the win screen
 		if(other.name == "Car") {
 			Manager.curLevel = SceneManager.GetActiveScene().name;
 			Manager.newLevel = TargetScene;
