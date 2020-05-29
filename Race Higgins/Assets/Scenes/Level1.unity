@@ -309,16 +309,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 579285785596228078, guid: 28c32c18a54debe4e8c499efeeb992d7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 579285785596228078, guid: 28c32c18a54debe4e8c499efeeb992d7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 9006649494878455160, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: m_Range
