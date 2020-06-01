@@ -150,10 +150,6 @@ public class CarMovement : MonoBehaviour {
 		// Do steering based off of phone rotation
 		rb.AddRelativeTorque(new Vector3(0, -1, 0) * TurnRate * GyroscopeInput.angle / 45);
 		limitVel(MaxSpeed);
-		// Reload the scene if the player falls into oblivion
-		if(transform.position.y < -150) {
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-		}
 	}
 
 }
