@@ -208,6 +208,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8556522290237550980, guid: 28c32c18a54debe4e8c499efeeb992d7,
+        type: 3}
+      propertyPath: TrackObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556522290237550980, guid: 28c32c18a54debe4e8c499efeeb992d7,
+        type: 3}
+      propertyPath: TileSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8556522290237550980, guid: 28c32c18a54debe4e8c499efeeb992d7,
+        type: 3}
+      propertyPath: TrackObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1585384328}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28c32c18a54debe4e8c499efeeb992d7, type: 3}
 --- !u!1001 &192826358
