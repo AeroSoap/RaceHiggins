@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 7270109897967118008}
   - component: {fileID: 7270109897967118007}
   - component: {fileID: 7270109897967118006}
+  - component: {fileID: 1714437059319933305}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -402,3 +403,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Vehicle: {fileID: 7270109896204888629}
+--- !u!114 &1714437059319933305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7270109897967118004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed912562177124946814d5db083d25e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Smoothing: 0.9
