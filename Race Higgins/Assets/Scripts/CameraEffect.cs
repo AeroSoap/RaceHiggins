@@ -22,6 +22,5 @@ public class CameraEffect : MonoBehaviour {
 		float target = rb.velocity.magnitude / 7 + 60;
 		fov = fov * Smoothing + target * (1 - Smoothing);
 		cam.fieldOfView = fov;
-		Debug.Log(rb.velocity.magnitude);
 	}
 }
