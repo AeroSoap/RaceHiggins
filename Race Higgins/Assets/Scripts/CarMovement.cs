@@ -135,7 +135,6 @@ public class CarMovement : MonoBehaviour {
 		sound.volume = delta / 4 + 0.1f;
 		sound.pitch = delta / 2 + 1;
 		prevVel = rb.velocity;
-		Debug.Log(delta);
 	}
 
 	void FixedUpdate() {
