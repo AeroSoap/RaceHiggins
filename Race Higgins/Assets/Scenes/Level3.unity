@@ -328,11 +328,6 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7270109896204888632, guid: 28c32c18a54debe4e8c499efeeb992d7,
-        type: 3}
-      propertyPath: sound
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7270109896204888635, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: m_LocalPosition.x
