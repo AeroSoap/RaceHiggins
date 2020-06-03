@@ -47,7 +47,6 @@ public class CarMovement : MonoBehaviour {
 		// Set gravity
 		// Initialize the previous distances array
 		prevDists = new float[Levs.Length];
-		Manager.time = 0;
 	}
 
 	Vector3 updateNormal(Ray ray, RaycastHit hit) {
@@ -138,8 +137,6 @@ public class CarMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		// Increase the time counter
-		Manager.time += Time.fixedDeltaTime;
 		// Update gravity
 		Physics.gravity = GravityCalculator.GetGravity(transform.position);
 		getTouchInputs();
