@@ -22,6 +22,14 @@ public class CarMovement : MonoBehaviour {
 	public float NormalSpeed;
 	// Levitation points to use
 	public Vector3[] Levs;
+	// Audio source to change volume and pitch of
+	public AudioSource sound;
+
+	// Previous velocity
+	Vector3 prevVel;
+
+	// Smoothed difference value of car velocity
+	float delta;
 
 	// The previous distances of all the rays casted
 	float[] prevDists;
@@ -119,6 +127,17 @@ public class CarMovement : MonoBehaviour {
 		}
 	}
 
+	// Changes the volume and pitch of the hovering sound
+	void changeSound() {
+		float dif = (rb.velocity - prevVel).magnitude;
+		dif = Mathf.Min(dif, 1);
+		delta = delta * 0.99f + dif * 0.01f;
+		sound.volume = delta / 4 + 0.1f;
+		sound.pitch = delta / 2 + 1;
+		prevVel = rb.velocity;
+		Debug.Log(delta);
+	}
+
 	void FixedUpdate() {
 		// Increase the time counter
 		Manager.time += Time.fixedDeltaTime;
@@ -150,6 +169,7 @@ public class CarMovement : MonoBehaviour {
 		// Do steering based off of phone rotation
 		rb.AddRelativeTorque(new Vector3(0, -1, 0) * TurnRate * GyroscopeInput.angle / 45);
 		limitVel(MaxSpeed);
+		changeSound();
 	}
 
 }
