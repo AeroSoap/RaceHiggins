@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TileSize: 100
-  HeightOffset: 200
+  HeightOffset: 100
   PropagationDistance: 500
   TrackObjects:
   - {fileID: 0}
