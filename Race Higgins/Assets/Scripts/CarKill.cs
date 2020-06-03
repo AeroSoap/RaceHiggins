@@ -93,20 +93,18 @@ public class CarKill : MonoBehaviour {
 		int amt = (int)(PropagationDistance / TileSize + 0.999f);
 		for(int x = 0; x < killGrid.GetLength(0); x++) {
 			for(int z = 0; z < killGrid.GetLength(1); z++) {
-				if(killGrid[x, z] == floatNull) {
-					killGrid[x, z] = float.MaxValue;
-					for(int x2 = x - amt; x2 <= x + amt; x2++) {
-						for(int z2 = z - amt; z2 <= z + amt; z2++) {
-							if(x2 >= 0 && x2 < killGrid.GetLength(0) && z2 >= 0 && z2 < killGrid.GetLength(1)) {
-								if(!wasNull[x2, z2]) {
-									killGrid[x, z] = Mathf.Min(killGrid[x, z], killGrid[x2, z2]);
-								}
+				killGrid[x, z] = float.MaxValue;
+				for(int x2 = x - amt; x2 <= x + amt; x2++) {
+					for(int z2 = z - amt; z2 <= z + amt; z2++) {
+						if(x2 >= 0 && x2 < killGrid.GetLength(0) && z2 >= 0 && z2 < killGrid.GetLength(1)) {
+							if(!wasNull[x2, z2]) {
+								killGrid[x, z] = Mathf.Min(killGrid[x, z], killGrid[x2, z2]);
 							}
 						}
 					}
-					if(killGrid[x, z] == float.MaxValue) {
-						killGrid[x, z] = floatNull;
-					}
+				}
+				if(killGrid[x, z] == float.MaxValue) {
+					killGrid[x, z] = floatNull;
 				}
 			}
 		}
