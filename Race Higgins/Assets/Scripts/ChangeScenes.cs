@@ -1,6 +1,6 @@
 ﻿// ChangeScenes.cs
 // By: Harry Jennings-Ramirez
-// Last Edited: May 26th, 2020
+// Last Edited: June 3rd, 2020
 // Description: Changes scenes, usually when a button is pushed
 
 using System.Collections;
@@ -16,7 +16,7 @@ public class ChangeScenes : MonoBehaviour
     }
 
     public void OpenGame() {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("LevelTest");
     }
 
     public void HelpScene() {
