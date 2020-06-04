@@ -1724,6 +1724,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: V11TestTrack2
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a1745a40dc00e7e41bf2cddad791bd7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: a1745a40dc00e7e41bf2cddad791bd7d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1745a40dc00e7e41bf2cddad791bd7d, type: 3}
 --- !u!1 &369735421 stripped
