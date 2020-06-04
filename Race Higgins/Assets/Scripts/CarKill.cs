@@ -70,13 +70,16 @@ public class CarKill : MonoBehaviour {
 
 	// Gets the height of the killzone in each space where a track exists
 	void getHeights() {
+		int amt = 0;
 		Ray ray = new Ray();
+		int mask = LayerMask.GetMask("Track");
 		RaycastHit hit;
 		ray.direction = new Vector3(0, 1, 0);
 		for(int i = 0; i < killGrid.GetLength(0); i++) {
 			for(int j = 0; j < killGrid.GetLength(1); j++) {
 				ray.origin = gridToWorld(new Vector3(i, -1e6f, j));
-				if(Physics.Raycast(ray, out hit)) {
+				if(Physics.Raycast(ray, out hit, float.PositiveInfinity, mask)) {
+					amt++;
 					killGrid[i, j] = hit.point.y - HeightOffset;
 				} else {
 					killGrid[i, j] = floatNull;
