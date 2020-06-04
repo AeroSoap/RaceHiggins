@@ -32,7 +32,6 @@ public class GyroscopeInput : MonoBehaviour {
 		Vector3 dir = Vehicle.transform.rotation.eulerAngles;
 		// Rotate the camera so that it stays level in the real world
 		transform.rotation = Quaternion.Euler(dir + new Vector3(0, 0, angle));
-		Debug.Log(transform.InverseTransformDirection(transform.rotation.eulerAngles) + " " + transform.rotation.eulerAngles);
 		// Clamp the angle from -45 to 45, to prevent over-steering
 		angle = Mathf.Clamp(angle, -45, 45);
 	}
