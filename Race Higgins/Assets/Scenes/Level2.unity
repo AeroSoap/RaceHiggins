@@ -1226,7 +1226,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 0.99999994}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &458535976
 MeshRenderer:
@@ -1319,7 +1319,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.99999994, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &465888732
 MeshRenderer:
@@ -1412,7 +1412,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 0.99999994}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &518657838
 MeshRenderer:
@@ -3425,7 +3425,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 0.99999994}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1447976695
 MeshRenderer:
@@ -4533,7 +4533,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.0000001, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1699228399
 MeshRenderer:
@@ -4962,6 +4962,16 @@ PrefabInstance:
         type: 3}
       propertyPath: TileSize
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270109896204888630, guid: 28c32c18a54debe4e8c499efeeb992d7,
+        type: 3}
+      propertyPath: HeightOffset
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270109896204888630, guid: 28c32c18a54debe4e8c499efeeb992d7,
+        type: 3}
+      propertyPath: PropagationDistance
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7270109896204888635, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}

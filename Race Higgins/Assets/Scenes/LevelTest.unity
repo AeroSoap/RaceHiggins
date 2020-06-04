@@ -4456,6 +4456,16 @@ PrefabInstance:
       propertyPath: TrackObjects.Array.data[0]
       value: 
       objectReference: {fileID: 369735421}
+    - target: {fileID: 7270109896204888630, guid: 28c32c18a54debe4e8c499efeeb992d7,
+        type: 3}
+      propertyPath: HeightOffset
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7270109896204888630, guid: 28c32c18a54debe4e8c499efeeb992d7,
+        type: 3}
+      propertyPath: PropagationDistance
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 7270109896204888635, guid: 28c32c18a54debe4e8c499efeeb992d7,
         type: 3}
       propertyPath: m_LocalPosition.x
